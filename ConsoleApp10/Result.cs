@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace ConsoleApp10
@@ -9,24 +10,24 @@ namespace ConsoleApp10
         /// <summary>
         /// Counter for results
         /// </summary>
-        private static int count = 0;
+        private static int count;
 
         /// <summary>
         /// Result of math operation
         /// </summary>
         private static double result;
-        
+
         /// <summary>
-        /// List to save results. 
+        /// The list contains results of math operations
         /// </summary>
-        private static double[] arrayOfResults = new double[5];
+        private static List<double> listOfResults = new List<double>();
 
         /// <summary>
         /// the method get a result of math operation.
         /// </summary>
         /// <param name="opertion">Math operation</param>
         /// <returns></returns>
-        public static double GetResultOfMathOperation(string operation)
+        public static void GetResultOfMathOperation(string operation)
         {
             switch (operation)
             {
@@ -77,42 +78,49 @@ namespace ConsoleApp10
                         break;
                     }
             }
-
             count++;
-
-            SaveResult(result);
-
-            return result;
-        }
+             
+            AddResult(result);
+        }       
 
         /// <summary>
-        /// The method saves 5 last results of math operations.
+        /// The method add result in the list.
         /// </summary>
-        /// <param name="result"></param>
-        private static void SaveResult(double result)
+        /// <param name="result">result of math operation</param>
+        private static void AddResult(double result)
         {
-            int times = (int)(count / 5);
-
-            if (count < 5)
-            {
-                arrayOfResults[count] = result;
-            }
-            else
-            {
-                int index = count - times * 5;
-                arrayOfResults[index] = result;
-            } 
+            listOfResults.Add(result);
         }
 
         /// <summary>
-        /// The method show 5 last results of last math operations
+        /// The method shows 5 latest results.
         /// </summary>
         public static void Show()
         {
-            for (int i = 0; i < arrayOfResults.Length; i++)
+            Console.WriteLine();
+
+            for (int i = 0; i < listOfResults.Count; i++)
             {
-                Console.WriteLine(arrayOfResults[i]);
+                if (listOfResults.Count < 5)
+                {
+                    Console.Write($"{listOfResults[i]} ");
+                }
+                else
+                {
+                    int last = listOfResults.Count - 5; //variable for shift counter 5 positions back 
+
+                    while (last != listOfResults.Count)
+                    {
+                        Console.Write($"{listOfResults[last]} ");
+
+                        last++;                            
+                    }
+
+                    break;
+                }
             }
+
+            Console.WriteLine("\n");
         }
     }
 }

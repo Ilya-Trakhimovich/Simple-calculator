@@ -26,9 +26,9 @@ namespace ConsoleApp10
         {
             while (isCorrect)
             {
-                Console.Write("Enter the fist number ");
+                Console.Write("\nEnter the fist number ");
 
-                if (isCorrect = !double.TryParse(Console.ReadLine(), out firstNumber))
+                if (isCorrect = !double.TryParse(Console.ReadLine(), out firstNumber)) //TryParse() converts " " into ""! example: (45 45 45 == 454545)
                 {
                     Console.WriteLine("Wrong format! Try again.\n");
                 }
