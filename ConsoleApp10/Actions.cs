@@ -4,6 +4,12 @@ using System.Text;
 
 namespace ConsoleApp10
 {
+    /// <summary>
+    /// The class contains 3 methods: 
+    /// save operation
+    /// start from begin
+    /// exit from app
+    /// </summary>
     public static class Actions
     {
         //private static bool isCorect;

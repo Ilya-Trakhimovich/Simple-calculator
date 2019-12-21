@@ -5,6 +5,14 @@ using System.Text;
 
 namespace ConsoleApp10
 {
+    /// <summary>
+    /// The class allows to get results of math operations, 
+    /// save it in list and show 5 latest results. 
+    /// Contains 3 methods:
+    /// get result of math operation
+    /// add result in the list
+    /// show 5 latest results
+    /// </summary>
     public static class Result
     {
         /// <summary>
@@ -31,28 +39,26 @@ namespace ConsoleApp10
         {
             switch (operation)
             {
-                case "+":
+                case "+" :
                     {
                         result = InputData.firstNumber + InputData.secondNumber;
 
                         Console.WriteLine($"{InputData.firstNumber} + {InputData.secondNumber} = {result}\n");
-
                         break;
                     }
-                case "-":
+
+                case "-" :
                     {
                         result = InputData.firstNumber - InputData.secondNumber;
 
                         Console.WriteLine($"{InputData.firstNumber} - {InputData.secondNumber} = {result}\n");
-
                         break;
                     }
-                case "*":
+                case "*" :
                     {
                         result = InputData.firstNumber * InputData.secondNumber;
 
                         Console.WriteLine($"{InputData.firstNumber} * {InputData.secondNumber} = {result}\n");
-
                         break;
                     }
                 case "/":
@@ -60,13 +66,11 @@ namespace ConsoleApp10
                         if (InputData.secondNumber == 0)
                         {
                             Console.WriteLine("Divide by zero is prohibited!\n");
-
                             break;
                         }
                         result = InputData.firstNumber / InputData.secondNumber;
 
                         Console.WriteLine($"{InputData.firstNumber} / {InputData.secondNumber} = {result}\n");
-
                         break;
                     }
                 case "^":
@@ -74,7 +78,6 @@ namespace ConsoleApp10
                         result = Math.Pow(InputData.firstNumber, InputData.secondNumber);
 
                         Console.WriteLine($"{InputData.firstNumber} ^ {InputData.secondNumber} ={result}\n");
-
                         break;
                     }
             }
@@ -87,7 +90,7 @@ namespace ConsoleApp10
         /// The method add result in the list.
         /// </summary>
         /// <param name="result">result of math operation</param>
-        private static void AddResult(double result)
+        public static void AddResult(double result)
         {
             listOfResults.Add(result);
         }
@@ -103,7 +106,11 @@ namespace ConsoleApp10
             {
                 if (listOfResults.Count < 5)
                 {
+                    Console.ForegroundColor = ConsoleColor.Blue;
+
                     Console.Write($"{listOfResults[i]} ");
+
+                    Console.ResetColor();
                 }
                 else
                 {
@@ -111,9 +118,13 @@ namespace ConsoleApp10
 
                     while (last != listOfResults.Count)
                     {
+                        Console.ForegroundColor = ConsoleColor.Blue;
+
                         Console.Write($"{listOfResults[last]} ");
 
-                        last++;                            
+                        Console.ResetColor();
+
+                        last++;
                     }
 
                     break;

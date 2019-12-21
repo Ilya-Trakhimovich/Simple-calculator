@@ -26,11 +26,15 @@ namespace ConsoleApp10
         {
             while (isCorrect)
             {
-                Console.Write("\nEnter the fist number ");
+                Console.Write("Enter the fist number ");
 
                 if (isCorrect = !double.TryParse(Console.ReadLine(), out firstNumber)) //TryParse() converts " " into ""! example: (45 45 45 == 454545)
                 {
+                    Console.ForegroundColor = ConsoleColor.Red;
+
                     Console.WriteLine("Wrong format! Try again.\n");
+
+                    Console.ResetColor();
                 }
             }
 
@@ -48,7 +52,11 @@ namespace ConsoleApp10
 
                 if (isCorrect = !double.TryParse(Console.ReadLine(), out secondNumber))
                 {
+                    Console.ForegroundColor = ConsoleColor.Red;
+
                     Console.WriteLine("Wrong format! Try again.\n");
+
+                    Console.ResetColor();
                 }
             }
 
@@ -68,8 +76,13 @@ namespace ConsoleApp10
 
                 if (mathOperation != "+" && mathOperation != "-" && mathOperation != "*" && mathOperation != "/" && mathOperation != "^")
                 {
+                    Console.ForegroundColor = ConsoleColor.Red;
+
                     Console.WriteLine("Operation not define!. Try again!\n");
+
                     isCorrect = true;
+
+                    Console.ResetColor();
                 }
                 else
                 {
